@@ -27,3 +27,4 @@ log:
 config:
 	cp config.mk ../config.mk
 	sed -i 's|#include|include|g' Makefile
+	git commit -am "include config"
