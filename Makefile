@@ -4,7 +4,7 @@ include config.mk
 do: clean pull build
 
 pull:
-	git pull
+	git pull; true
 
 run:
 	docker pull eyedeekay/em-dosbox
