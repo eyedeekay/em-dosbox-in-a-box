@@ -6,7 +6,7 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -type d ); do
     mv "$f" "$d"
     #echo "mv $f" "$d"
     e=$(find "$f" | grep -vi cwsdpmi | grep -i exe | sed "s|/home/dosbox/em-dosbox/src/programs/$c/||g" )
-    ./packager.py "$f" "$f" "$EXE"
+    ./packager.py "$c" "$c" "$e"
     #echo "./packager.py $c $c $e"
 done
 
