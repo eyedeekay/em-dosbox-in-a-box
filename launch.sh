@@ -7,7 +7,7 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -type d ); do
     echo "mv $f" "$d"
     e=$(find "$f" | grep -vi cwsdpmi | grep -i exe | sed "s|/home/dosbox/em-dosbox/src/programs/$c||g" )
     #./packager.py "$f" "$f" "$EXE"
-    find /home/dosbox/em-dosbox/src -maxdepth 1 -type d
+    find /home/dosbox/em-dosbox/src/ -maxdepth 1 *.html
     echo "./packager.py $c $c $e"
 done
 
