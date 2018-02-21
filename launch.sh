@@ -1,6 +1,6 @@
 #! /bin/sh
 
-ls /home/dosbox/em-dosbox/src/
+ls /home/dosbox/em-dosbox/src/programs
 
 echo "Log File/Temporary Index Page" | tee -a log.md
 echo "=============================" | tee -a log.md
@@ -17,10 +17,10 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -typ
     echo "Configuring $c" | tee -a log.md
     echo "--------------" | tee -a log.md
     echo "" | tee -a log.md
-    echo " c=$c" | tee -a log.md
-    echo " d=$d" | tee -a log.md
-    echo " e=$e" | tee -a log.md
-    echo " f=$f" | tee -a log.md
+    echo "  * c=$c" | tee -a log.md
+    echo "  * d=$d" | tee -a log.md
+    echo "  * e=$e" | tee -a log.md
+    echo "  * f=$f" | tee -a log.md
     echo "" | tee -a log.md
     echo "#### moving files" | tee -a log.md
     echo "" | tee -a log.md
@@ -39,7 +39,7 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -typ
     ./packager.py "$c" "$c" "$e" | tee -a log.md
 done
 
-markdown log.md
+markdown log.md | tee log.html
 
 ls *.html
 
