@@ -18,6 +18,5 @@ RUN cp /etc/emscripten.cfg /home/dosbox/.emscripten
 USER root
 COPY launch.sh /bin/
 USER dosbox
-COPY programs /home/dosbox/em-dosbox/src/programs
 WORKDIR /home/dosbox/em-dosbox/src/
 CMD launch.sh
