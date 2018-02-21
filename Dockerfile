@@ -12,7 +12,7 @@ RUN chown -R dosbox:dosbox /home/dosbox/em-dosbox/
 USER dosbox
 WORKDIR /home/dosbox/em-dosbox/
 RUN ./autogen.sh
-RUN emconfigure ./configure; cat config.log
+RUN emconfigure ./configure
 RUN make
 WORKDIR /home/dosbox/em-dosbox/src/
 CMD [ "darkhttpd", "--index", "dosbox.html" ]
