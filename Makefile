@@ -21,4 +21,4 @@ clobber: clean
 	docker rmi -f em-dosbox
 
 log:
-	docker logs -t em-dosbox
+	docker logs em-dosbox
