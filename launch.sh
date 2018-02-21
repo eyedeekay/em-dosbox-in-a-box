@@ -1,6 +1,6 @@
 #! /bin/sh
 
-ls /home/dosbox/em-dosbox/src/programs/
+ls /home/dosbox/em-dosbox/src/
 
 echo "Log File/Temporary Index Page" | tee -a log.md
 echo "=============================" | tee -a log.md
