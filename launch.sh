@@ -10,7 +10,7 @@ echo "" | tee -a log.md
 
 markdown log.md | tee log.html
 
-darkhttpd /home/dosbox/em-dosbox/src/ --index log.html -log log.txt &
+darkhttpd /home/dosbox/em-dosbox/src/ --index log.html --log log.txt &
 
 for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -type d ); do
     c=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/||g')
