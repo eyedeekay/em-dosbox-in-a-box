@@ -14,5 +14,6 @@ WORKDIR /home/dosbox/em-dosbox/
 RUN ./autogen.sh
 RUN emconfigure ./configure
 RUN emmake make
+COPY programs /home/dosbox/em-dosbox/src/programs
 WORKDIR /home/dosbox/em-dosbox/src/
 CMD [ "darkhttpd", "--index", "dosbox.html" ]
