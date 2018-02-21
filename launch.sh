@@ -35,7 +35,7 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -typ
     echo "[$c.html]($c.html)" | tee -a log.md
     echo "" | tee -a log.md
 
-    mv "$f" "$d" | tee -a log.md
+    ln -sf "$f" "$d" | tee -a log.md
     ./packager.py "$c" "$c" "$e" | tee -a log.md
 done
 
