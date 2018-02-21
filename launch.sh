@@ -1,5 +1,7 @@
 #! /bin/sh
 
+ls /home/dosbox/em-dosbox/src/programs
+
 for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -type d ); do
     c=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/||g')
     d=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/|/home/dosbox/em-dosbox/src/|g')
