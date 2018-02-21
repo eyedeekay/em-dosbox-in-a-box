@@ -1,6 +1,6 @@
 #! /bin/sh
 find --help
-for f in $(find /home/dosbox/em-dosbox/src/programs -type d -d 1); do
+for f in $(find /home/dosbox/em-dosbox/src/programs -d 1 -type d ); do
     #mv "$f" $(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/|/home/dosbox/em-dosbox/src/|g')
     echo "mv $f" $(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/|/home/dosbox/em-dosbox/src/|g')
     EXE=$(find "$f" | grep -vi cwsdpmi | grep -i exe )
