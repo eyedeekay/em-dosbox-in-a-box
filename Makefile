@@ -1,5 +1,5 @@
 
-include config.mk
+#include ../config.mk
 
 do: clean pull install run
 
@@ -23,3 +23,7 @@ clobber: clean
 
 log:
 	docker logs em-dosbox
+
+config:
+	cp config.mk ../config.mk
+	sed -i 's|#include|include|g' Makefile
