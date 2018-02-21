@@ -12,8 +12,10 @@ RUN chown -R dosbox:dosbox /home/dosbox/em-dosbox/
 USER dosbox
 WORKDIR /home/dosbox/em-dosbox/
 RUN ./autogen.sh
-RUN emconfigure ./configure
+RUN emconfigure ./configure --enable-emscripten=yes --host=asmjs
 RUN emmake make
-COPY programs /home/dosbox/em-dosbox/src/programs
+RUN cp /etc/emscripten.cfg /home/dosbox/.emscripten
+COPY programs/paranoia /home/dosbox/em-dosbox/src/paranoia
 WORKDIR /home/dosbox/em-dosbox/src/
-CMD [ "darkhttpd", "--index", "dosbox.html" ]
+RUN ./packager.py paranoia paranoia frotz.exe
+CMD darkhttpd .
