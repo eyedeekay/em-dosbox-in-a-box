@@ -1,6 +1,6 @@
 #! /bin/sh
 
-ls /home/dosbox/em-dosbox/src/programs/*
+#ls /home/dosbox/em-dosbox/src/programs/
 
 for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 0 -type d ); do
     c=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/||g')
