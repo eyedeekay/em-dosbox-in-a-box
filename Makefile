@@ -1,7 +1,10 @@
 
 include config.mk
 
-do: build
+do: clean pull build
+
+pull:
+	git pull
 
 run:
 	docker pull eyedeekay/em-dosbox
