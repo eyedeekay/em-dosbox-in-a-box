@@ -1,6 +1,6 @@
 #! /bin/sh
 
-ls /home/dosbox/em-dosbox/src/programs/programs; exit
+ls /home/dosbox/em-dosbox/src/programs/; exit
 
 for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -type d ); do
     c=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/||g')
