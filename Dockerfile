@@ -8,7 +8,6 @@ RUN apk add emscripten-fastcomp emscripten emscripten-optimizer \
     automake darkhttpd git glib-dev glib
 RUN adduser -D -h /home/dosbox dosbox dosbox
 RUN git clone https://github.com/dreamlayers/em-dosbox.git /home/dosbox/em-dosbox/
-COPY launch.sh /bin/
 RUN chown -R dosbox:dosbox /home/dosbox/em-dosbox/
 USER dosbox
 WORKDIR /home/dosbox/em-dosbox/
@@ -16,6 +15,9 @@ RUN ./autogen.sh
 RUN emconfigure ./configure --enable-emscripten=yes --host=asmjs
 RUN emmake make
 RUN cp /etc/emscripten.cfg /home/dosbox/.emscripten
+USER root
+COPY launch.sh /bin/
+USER dosbox
 COPY programs /home/dosbox/em-dosbox/src/programs
 WORKDIR /home/dosbox/em-dosbox/src/
 CMD launch.sh
