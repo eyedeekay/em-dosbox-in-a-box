@@ -8,6 +8,10 @@ echo "" | tee -a log.md
 echo "This is a temporary index page generated from the log file." | tee -a log.md
 echo "" | tee -a log.md
 
+markdown log.md | tee log.html
+
+darkhttpd /home/dosbox/em-dosbox/src/ --index log.html -log log.txt &
+
 for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -type d ); do
     c=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/||g')
     d=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/|/home/dosbox/em-dosbox/src/|g')
@@ -35,6 +39,8 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -typ
     echo "[$c.html]($c.html)" | tee -a log.md
     echo "" | tee -a log.md
 
+    markdown log.md | tee log.html
+
     ln -sf "$f" "$d" | tee -a log.md
     ./packager.py "$c" "$c" "$e" | tee -a log.md
 done
@@ -43,4 +49,4 @@ markdown log.md | tee log.html
 
 ls *.html
 
-darkhttpd /home/dosbox/em-dosbox/src/ --index log.html
+tail -f log.txt
