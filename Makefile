@@ -12,8 +12,10 @@ build:
 	docker run -d -t -p 405:8080 --name em-dosbox em-dosbox
 
 clean:
-	docker rm -f em-dosbox; \
-	docker rmi -f em-dosbox; \
+	docker rm -f em-dosbox
+
+clobber: clean
+	docker rmi -f em-dosbox
 
 log:
 	docker logs -t em-dosbox
