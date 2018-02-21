@@ -23,8 +23,8 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -typ
     echo "---------------"
     echo "./packager.py $c $c $e"
     echo
-    #mv "$f" "$d"
-    #./packager.py "$c" "$c" "$e"
+    mv "$f" "$d"
+    ./packager.py "$c" "$c" "$e"
 done
 
 ls *.html
