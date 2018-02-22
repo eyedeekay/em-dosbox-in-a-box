@@ -63,6 +63,8 @@ done
 
 markdown log.md | tee log.html
 
+killall darkhttpd; sleep 2
+darkhttpd /home/dosbox/em-dosbox/src/ --index log.html --log log.txt &
 ls *.html
 
 tail -f log.txt
