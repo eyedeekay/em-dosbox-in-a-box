@@ -17,7 +17,7 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -typ
     d=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/|/home/dosbox/em-dosbox/src/|g')
     e=$(find "$f" | grep -vi cwsdpmi | grep -i exe | sed "s|/home/dosbox/em-dosbox/src/programs/$c/||g" )
 
-    echo "" | tee -a "$c.md"
+    echo "" | tee "$c.md"
     echo "Configuring $c" | tee -a "$c.md"
     echo "--------------" | tee -a "$c.md"
     echo "" | tee -a "$c.md"
@@ -55,9 +55,9 @@ for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -typ
     echo "[$c.html]($c.html)" | tee -a "$c.md"
     echo "" | tee -a "$c.md"
 
-    cat "$c.md" | tee -a log.md
-
-    markdown log.md | tee log.html
+    log=$(cat log.md "$c.md")
+    echo $log | tee log.md
+    markdown "$c.md" | tee -a log.html
 
 done
 
