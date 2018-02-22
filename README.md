@@ -5,7 +5,10 @@ Self-deploying, self-hosted web/em-dosbox based DOS games.
 ## Detailed Description:
 
 This set of scripts makes it easy to deploy a self-contained instance of
-em-dosbox with a collection of games.
+em-dosbox with a collection of games. Because it uses Emscripten, it can be
+deployed on a machine with very limited resources and rely instead on the
+resources of the clients. This makes it convenient for me since I mostly do
+casual, tablet-centric gaming.
 
 ### Dependencies:
 
@@ -48,3 +51,6 @@ commands:
 and wait. Emscripten, em-dosbox, and DOS game pages will be compiled and
 generated, and will be made available on the container at port 8080 and on the
 host at port 405.
+
+## Copying to LEDE: WIP
+
