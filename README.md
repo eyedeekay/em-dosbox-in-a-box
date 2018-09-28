@@ -17,7 +17,7 @@ casual, tablet-centric gaming.
 
 ## Usage:
 
-Thiss should work on any linux distribution with docker and make, and also on
+This should work on any linux distribution with docker and make, and also on
 MacOS with docker and make, and probably on Windows with docker via the Windows
 subsystem for Linux or cygwin, in order to use Make. You will need a collection
 of DOS game files collected into a directory, with one game per subdirectory. Since
