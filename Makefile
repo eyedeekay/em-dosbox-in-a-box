@@ -1,7 +1,12 @@
 
 #include ../config.mk
 
+PWD=$(shell pwd)
+
 do: clean create run
+
+echo:
+	@echo $(PWD)
 
 include ./include.mk
 
