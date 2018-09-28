@@ -1,5 +1,5 @@
 
-include ../config.mk
+#include ../config.mk
 
 do: clean install create run
 
