@@ -1,7 +1,7 @@
 
 #include ../config.mk
 
-do: clean install create run
+do: clean create run
 
 include ./include.mk
 
