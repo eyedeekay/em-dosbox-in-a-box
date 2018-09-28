@@ -1,5 +1,5 @@
 
-include ../config.mk
+#include ../config.mk
 
 include ./include.mk
 
