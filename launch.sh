@@ -12,52 +12,52 @@ markdown log.md | tee log.html
 
 darkhttpd /home/dosbox/em-dosbox/src/ --index log.html --log log.txt &
 
-for f in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -type d ); do
-    c=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/||g')
-    d=$(echo "$f" | sed 's|/home/dosbox/em-dosbox/src/programs/|/home/dosbox/em-dosbox/src/|g')
-    e=$(find "$f" | grep -vi cwsdpmi | grep -i exe | sed "s|/home/dosbox/em-dosbox/src/programs/$c/||g" )
+for full_path in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindepth 1 -type d ); do
+    game_name=$(echo "$full_path" | sed 's|/home/dosbox/em-dosbox/src/programs/||g')
+    game_dir=$(echo "$full_path" | sed 's|/home/dosbox/em-dosbox/src/programs/|/home/dosbox/em-dosbox/src/|g')
+    game_exe=$(find "$full_path" | grep -vi cwsdpmi | grep -i exe | sed "s|/home/dosbox/em-dosbox/src/programs/$game_name/||g" )
 
-    echo "" | tee "$c.md"
-    echo "Configuring $c" | tee -a "$c.md"
-    echo "--------------" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    echo "  * c=$c" | tee -a "$c.md"
-    echo "  * d=$d" | tee -a "$c.md"
-    echo "  * e=$e" | tee -a "$c.md"
-    echo "  * f=$f" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    echo "#### linking files" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    ln -sf "$f" "$d" | tee -a "$c.md"
-    echo "  ln -sf $f" "$d" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    echo "#### hashing files" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    md5sum "$d/$e" | tee -a "$c.md" | tee "$c.md5sum"
-    echo "" | tee -a "$c.md"
-    echo "  md5sum $d/$e" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    sha1sum "$d/$e" | tee -a "$c.md" | tee "$c.sha1sum"
-    echo "" | tee -a "$c.md"
-    echo "  sha1sum $d/$e" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    sha256sum "$d/$e" | tee -a "$c.md" | tee "$c.sha256sum"
-    echo "" | tee -a "$c.md"
-    echo "  sha256sum $d/$e" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    echo "#### packaging files" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    ./packager.py "$c" "$c" "$e" | tee -a "$c.md"
-    echo "  ./packager.py $c $c $e" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    echo "### access game at:" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
-    echo "[$c.html]($c.html)" | tee -a "$c.md"
-    echo "" | tee -a "$c.md"
+    echo "" | tee "$game_name.md"
+    echo "Configuring $game_name" | tee -a "$game_name.md"
+    echo "--------------" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    echo "  * c=$game_name" | tee -a "$game_name.md"
+    echo "  * d=$game_dir" | tee -a "$game_name.md"
+    echo "  * e=$game_exe" | tee -a "$game_name.md"
+    echo "  * f=$full_path" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    echo "#### linking files" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    ln -sf "$full_path" "$game_dir" | tee -a "$game_name.md"
+    echo "  ln -sf $full_path" "$game_dir" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    echo "#### hashing files" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    md5sum "$game_dir/$game_exe" | tee -a "$game_name.md" | tee "$game_name.md5sum"
+    echo "  " | tee -a "$game_name.md"
+    echo "  md5sum $game_dir/$game_exe" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    sha1sum "$game_dir/$game_exe" | tee -a "$game_name.md" | tee "$game_name.sha1sum"
+    echo "  " | tee -a "$game_name.md"
+    echo "  sha1sum $game_dir/$game_exe" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    sha256sum "$game_dir/$game_exe" | tee -a "$game_name.md" | tee "$game_name.sha256sum"
+    echo "  " | tee -a "$game_name.md"
+    echo "  sha256sum $game_dir/$game_exe" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    echo "#### packaging files" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    ./packager.py "$game_name" "$game_name" "$game_exe" | tee -a "$game_name.md"
+    echo "  ./packager.py $game_name $game_name $game_exe" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    echo "### access game at:" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
+    echo "[$game_name.html]($game_name.html)" | tee -a "$game_name.md"
+    echo "  " | tee -a "$game_name.md"
 
-    log=$(cat log.md "$c.md")
+    log=$(cat log.md "$game_name.md")
     echo $log | tee log.md
-    markdown "$c.md" | tee -a log.html
+    markdown "$game_name.md" | tee -a log.html
 
 done
 
