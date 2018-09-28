@@ -12,7 +12,7 @@ install:
 	docker pull eyedeekay/em-dosbox-in-a-box
 
 create:
-	docker create --name em-dosbox --volume $(MOUNT_PROGRAMS_FOLDER) eyedeekay/em-dosbox-in-a-box
+	docker create --name em-dosbox $(MOUNT_PROGRAMS_FOLDER) eyedeekay/em-dosbox-in-a-box
 
 run:
 	docker run -d -t \
