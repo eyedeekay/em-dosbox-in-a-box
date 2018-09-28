@@ -5,7 +5,7 @@ RUN apk update
 RUN apk upgrade
 RUN apk add emscripten-fastcomp emscripten emscripten-optimizer \
     emscripten-libs-asmjs emscripten-libs-wasm make autoconf autoconf-archive \
-    automake darkhttpd git glib-dev glib pandoc
+    automake darkhttpd git glib-dev glib markdown
 RUN adduser -D -h /home/dosbox dosbox dosbox
 RUN git clone https://github.com/dreamlayers/em-dosbox.git /home/dosbox/em-dosbox/
 RUN chown -R dosbox:dosbox /home/dosbox/em-dosbox/

@@ -57,11 +57,11 @@ for full_path in $(find /home/dosbox/em-dosbox/src/programs -maxdepth 1 -mindept
 
     log=$(cat log.md "$game_name.md")
     echo "$log" | tee log.md
-    pandoc "$game_name.md" -o log.html
+    markdown "$game_name.md" -o log.html
 
 done
 
-pandoc log.md -o log.html
+markdown log.md -o log.html
 
 killall darkhttpd; sleep 2
 darkhttpd /home/dosbox/em-dosbox/src/ --index log.html --log log.txt &
