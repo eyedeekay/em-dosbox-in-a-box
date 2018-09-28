@@ -1,9 +1,9 @@
 
 #include ../config.mk
 
-include ./include.mk
-
 do: clean install create run
+
+include ./include.mk
 
 pull:
 	git pull; true
