@@ -1,5 +1,5 @@
 
-#include ../config.mk
+include ../config.mk
 
 do: clean install create run
 
@@ -12,13 +12,14 @@ install:
 	docker pull eyedeekay/em-dosbox-in-a-box
 
 create:
-	docker create --name em-dosbox $(MOUNT_PROGRAMS_FOLDER) eyedeekay/em-dosbox-in-a-box
+	docker create --tty \
+		--name em-dosbox \
+		$(MOUNT_PROGRAMS_FOLDER) \
+		-p 0.0.0.0:405:8080 \
+		eyedeekay/em-dosbox-in-a-box
 
 run:
-	docker run -d -t \
-		-p 0.0.0.0:405:8080 \
-		--name em-dosbox \
-		eyedeekay/em-dosbox-in-a-box
+	docker start em-dosbox
 
 build:
 	docker build -t eyedeekay/em-dosbox-in-a-box .
