@@ -1,6 +1,7 @@
 # em-dosbox-in-a-box
 
-Self-deploying, self-hosted web/em-dosbox based DOS games.
+Self-deploying, self-hosted web/em-dosbox based DOS games. By default it listens
+on all addresses.
 
 ## Detailed Description:
 
