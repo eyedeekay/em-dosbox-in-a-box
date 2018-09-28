@@ -1,7 +1,9 @@
 
-#include ../config.mk
+include ../config.mk
 
-do: clean pull install run
+include ./include.mk
+
+do: clean install create run
 
 pull:
 	git pull; true
@@ -9,8 +11,14 @@ pull:
 install:
 	docker pull eyedeekay/em-dosbox-in-a-box
 
+create:
+	docker create --name em-dosbox --volume $(MOUNT_PROGRAMS_FOLDER) eyedeekay/em-dosbox-in-a-box
+
 run:
-	docker run -d -t -p 405:8080 $(MOUNT_PROGRAMS_FOLDER) --name em-dosbox eyedeekay/em-dosbox-in-a-box
+	docker run -d -t \
+		-p 0.0.0.0:405:8080 \
+		--name em-dosbox \
+		eyedeekay/em-dosbox-in-a-box
 
 build:
 	docker build -t eyedeekay/em-dosbox-in-a-box .
@@ -24,7 +32,4 @@ clobber: clean
 log:
 	docker logs em-dosbox-in-a-box
 
-config:
-	cp config.mk ../config.mk
-	sed -i 's|#include|include|g' Makefile
-	git commit -am "include config"
+
