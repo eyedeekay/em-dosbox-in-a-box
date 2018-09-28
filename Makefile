@@ -1,5 +1,5 @@
 
-#include ../config.mk
+include ../config.mk
 
 do: clean create run
 
@@ -15,7 +15,7 @@ create:
 	docker create --tty \
 		--name em-dosbox \
 		$(MOUNT_PROGRAMS_FOLDER) \
-		-p 0.0.0.0:405:8080 \
+		-p $(IP_ADDR):405:8080 \
 		eyedeekay/em-dosbox-in-a-box
 
 run:
